@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Description: TODO
+ * Description: 测试类
  * Package: com.leeves.app.controller
  *
  * @author Leeves
@@ -23,9 +24,10 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @RestController
+@RequestMapping("/test")
 public class TestController {
 
-    @GetMapping("/test")
+    @GetMapping("/fastjson")
     @SerializeField(clazz = User.class, excludes = {"name"})
     public User JsonTest() {
         User user = new User();
@@ -34,7 +36,7 @@ public class TestController {
         return user;
     }
 
-    @PostMapping("/test")
+    @PostMapping("/valid")
     @SerializeField(clazz = User.class, excludes = {"pwd"})
     public User JsonRTest(@Valid @RequestBody User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -54,5 +56,4 @@ public class TestController {
         user.setPhone("123");
         return user;
     }
-
 }

@@ -2,8 +2,6 @@ package com.leeves.app.dto;
 
 import com.leeves.app.annotation.CheckPhone;
 
-import javax.validation.constraints.NotNull;
-
 import lombok.Data;
 
 /**
