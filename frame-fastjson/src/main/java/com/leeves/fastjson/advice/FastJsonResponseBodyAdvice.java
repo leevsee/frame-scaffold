@@ -20,7 +20,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 /**
- * Description: TODO
+ * Description: fastjson返回类
  * Package: com.leeves.fastjsondemo.advice
  *
  * @author Leeves

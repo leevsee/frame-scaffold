@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Description: TODO
+ * Description: 过滤注释
  * Package: com.leeves.fastjsondemo.annotation
  *
  * @author Leeves

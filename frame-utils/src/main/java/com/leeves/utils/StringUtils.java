@@ -26,8 +26,8 @@ import java.util.regex.Pattern;
  */
 public class StringUtils {
 
-    public static final String HTML_A_TAG_PATTERN = "(?i)<a([^>]+)>(.+?)</a>";
-    public static final String HTML_A_HREF_TAG_PATTERN = "\\s*(?i)href\\s*=\\s*(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))";
+    private static final String HTML_A_TAG_PATTERN = "(?i)<a([^>]+)>(.+?)</a>";
+    private static final String HTML_A_HREF_TAG_PATTERN = "\\s*(?i)href\\s*=\\s*(\"([^\"]*\")|'[^']*'|([^'\">\\s]+))";
     private static final Pattern patternTag;
     private static final Pattern patternLink;
     private static Matcher matcherTag;
@@ -111,8 +111,8 @@ public class StringUtils {
     public static boolean isGBK(String str) {
         char[] chars = str.toCharArray();
         boolean isGBK = false;
-        for (int i = 0; i < chars.length; i++) {
-            byte[] bytes = ("" + chars[i]).getBytes();
+        for (char aChar : chars) {
+            byte[] bytes = ("" + aChar).getBytes();
             if (bytes.length == 2) {
                 int[] ints = new int[2];
                 ints[0] = bytes[0] & 0xff;
@@ -411,12 +411,12 @@ public class StringUtils {
     public static String toAscii(String from) {
         StringBuilder sb = new StringBuilder();
         byte[] bt = from.getBytes();
-        for (int i = 0; i < bt.length; i++) {
-            if (bt[i] < 0) {//是汉字去高位1
-                sb.append((char) (bt[i] & 0x7f));
+        for (byte aBt : bt) {
+            if (aBt < 0) {//是汉字去高位1
+                sb.append((char) (aBt & 0x7f));
             } else {//是英文字符补0作记录
                 sb.append((char) 0);
-                sb.append((char) bt[i]);
+                sb.append((char) aBt);
             }
         }
         return sb.toString();
@@ -497,7 +497,7 @@ public class StringUtils {
                 if (isBlank(link)) {
                     continue;
                 }
-                if (-1 != link.indexOf("pan.baidu.com")) {
+                if (link.contains("pan.baidu.com")) {
                     continue;
                 }
                 Map<String, String> url = new HashMap<String, String>();
