@@ -1,22 +1,23 @@
-package com.leeves.app;
+package com.leeves.browser;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * Description: app启动入口类
- * Package: com.leeves.app
+ * Description: TODO
+ * Package: com.leeves.browser
  *
  * @author Leeves
- * @date 2018-05-06
+ * @date 2018-05-14
  */
 @SpringBootApplication
 @ComponentScan("com.leeves")
-public class FrameAppApplication {
+public class FrameBrowserApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FrameAppApplication.class, args);
+        SpringApplication.run(FrameBrowserApplication.class, args);
     }
 
 }
+

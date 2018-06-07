@@ -17,7 +17,7 @@ import javax.validation.Payload;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * Description: TODO
+ * Description: 电话号码验证注解
  * Package: com.leeves.app.annotation
  *
  * @author Leeves
@@ -35,9 +35,23 @@ public @interface CheckPhone {
 
     Class<? extends Payload>[] payload() default {};
 
+    /**
+     * 注解实现
+     */
     @Slf4j
     class ValidPhoneChecker implements ConstraintValidator<CheckPhone, String> {
 
+        /**
+         * 初始化方法
+         */
+        @Override
+        public void initialize(CheckPhone constraintAnnotation) {
+
+        }
+
+        /**
+         * 验证方法
+         */
         @Override
         public boolean isValid(String value, ConstraintValidatorContext context) {
             if (StringUtils.isBlank(value)){

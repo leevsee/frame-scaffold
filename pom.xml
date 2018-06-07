@@ -11,6 +11,8 @@
 		<module>frame-app</module>
 		<module>frame-utils</module>
         <module>frame-base</module>
+        <module>frame-security</module>
+        <module>frame-browser</module>
     </modules>
 
 	<packaging>pom</packaging>

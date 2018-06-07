@@ -12,6 +12,7 @@ import java.util.Map;
  */
 
 public class R<T> extends HashMap<String, Object> {
+
     public R() {
         put(BaseConst.RETRUN_CODE, BaseConst.RETRUN_SUCCESS_CODE);
         put(BaseConst.RETRUN_MSG, "处理成功");
@@ -48,6 +49,10 @@ public class R<T> extends HashMap<String, Object> {
         return r;
     }
 
+    public static R ok() {
+        return new R();
+    }
+
     public static R ok(String msg) {
         R r = new R();
         r.put(BaseConst.RESULT_CODE, BaseConst.RESULT_SUCCESS_CODE);
@@ -75,7 +80,4 @@ public class R<T> extends HashMap<String, Object> {
         return this;
     }
 
-    public static R ok() {
-        return new R();
-    }
 }
