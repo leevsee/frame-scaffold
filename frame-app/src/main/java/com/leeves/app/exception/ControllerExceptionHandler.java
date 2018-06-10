@@ -7,18 +7,21 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Description: 自定义异常处理
+ * Description: Controller异常处理
  * Package: com.leeves.app.exception
  *
  * @author Leeves
  * @date 2018-05-09
  */
 @ControllerAdvice
-public class GlobalExceptionHandler {
+public class ControllerExceptionHandler {
 
+    /**
+     * 对于Controller产生的BizException异常进行处理
+     */
     @ExceptionHandler(BizException.class)
     @ResponseBody
-    public R defualErrorHandler(Exception e){
+    public R defualErrorHandler(BizException e){
         return R.resultError(e.getMessage());
     }
 

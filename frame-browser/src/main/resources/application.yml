@@ -1,0 +1,14 @@
+server:
+  port: 8004
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+  security:
+    user:
+      name: leeves
+      password: leeves
+logging:
+  level:
+    com: debug

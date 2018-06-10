@@ -65,4 +65,12 @@ public class TestController {
         return user;
     }
 
+    /**
+     * 500服务器错误
+     */
+    @GetMapping("/testErr")
+    public String errTest() {
+        throw new RuntimeException("500服务器错误");
+    }
+
 }
