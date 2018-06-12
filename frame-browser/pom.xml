@@ -7,45 +7,40 @@
         <groupId>com.leeves</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
-
+    <version>${frame.browser}</version>
     <artifactId>frame-browser</artifactId>
-    <version>0.0.1</version>
-    <name>frame-browser</name>
+    <name>frame browser</name>
+    <packaging>jar</packaging>
 
-    <properties>
-        <frame.fastjson>0.0.1</frame.fastjson>
-        <package.version>0.0.1</package.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>2.0.2.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>2.0.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
             <groupId>net.sourceforge.nekohtml</groupId>
             <artifactId>nekohtml</artifactId>
-            <version>1.9.22</version>
+            <version>${nekohtml.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.20</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
     <build>
-        <finalName>frame-scaffold-browser-${package.version}</finalName>
+        <finalName>frame-scaffold-browser-${frame.browser}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

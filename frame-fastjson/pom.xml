@@ -10,13 +10,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>frame-fastjson</artifactId>
-    <version>0.0.1</version>
+    <version>${frame.fastjson}</version>
     <name>frame-fastjson</name>
-    <description>Springboot自动化配置Fastjson框架并支持JSONP操作。</description>
-
-    <properties>
-        <fastjson.version>1.2.47</fastjson.version>
-    </properties>
+    <description>Springboot自动化配置Fastjson框架并支持JSONP操作</description>
 
     <dependencies>
         <dependency>

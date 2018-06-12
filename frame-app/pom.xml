@@ -9,21 +9,23 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <version>0.0.1</version>
+    <version>${frame.app}</version>
+    <artifactId>frame-app</artifactId>
     <name>frame app</name>
     <packaging>jar</packaging>
 
-    <properties>
-        <frame.fastjson>0.0.1</frame.fastjson>
-        <package.version>0.0.1</package.version>
-    </properties>
-
-    <artifactId>frame-app</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.leeves</groupId>
             <artifactId>frame-fastjson</artifactId>
             <version>${frame.fastjson}</version>
+            <!-- swagger3.0自带有google-collections 需去除后才不会报错 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.collections</groupId>
+                    <artifactId>google-collections</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -34,14 +36,25 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.20</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.swagger2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.swagger.ui.version}</version>
         </dependency>
 
     </dependencies>
 
     <build>
-        <finalName>frame-scaffold-app-${package.version}</finalName>
+        <finalName>frame-scaffold-app-${frame.app}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

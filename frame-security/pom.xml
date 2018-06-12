@@ -10,8 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>frame-security</artifactId>
-    <version>0.0.1</version>
-    <name>frame-security</name>
+    <version>${frame.security}</version>
+    <name>frame security</name>
     <description>spring security</description>
 
     <dependencies>
