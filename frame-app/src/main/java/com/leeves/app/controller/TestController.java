@@ -17,6 +17,7 @@ import javax.validation.Valid;
 import javax.validation.groups.Default;
 
 import lombok.extern.slf4j.Slf4j;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * Description: 测试演示controller
@@ -32,6 +33,7 @@ public class TestController {
     /**
      * FastJson排除类
      */
+    @ApiIgnore()
     @GetMapping("/test")
     @SerializeField(clazz = User.class, excludes = {"name"})
     public User jsonTest() {
@@ -44,6 +46,7 @@ public class TestController {
     /**
      * aop验证返回，分组验证
      */
+    @ApiIgnore()
     @PostMapping("/test")
     @SerializeField(clazz = User.class, excludes = {"pwd"})
     public R jsonRTest(@Validated(value = {FirstGroup.class, Default.class}) @RequestBody User user, BindingResult bindingResult) {

@@ -5,13 +5,14 @@
 
 	<groupId>com.leeves</groupId>
 	<artifactId>frame-scaffold</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${frame.scaffold.version}</version>
+
 	<modules>
-		<module>frame-fastjson</module>
-		<module>frame-app</module>
-		<module>frame-utils</module>
         <module>frame-base</module>
+		<module>frame-utils</module>
+		<module>frame-fastjson</module>
         <module>frame-security</module>
+		<module>frame-app</module>
         <module>frame-browser</module>
     </modules>
 
@@ -28,12 +29,21 @@
 	</parent>
 
 	<properties>
+        <frame.scaffold.version>0.0.1-SNAPSHOT</frame.scaffold.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<frame.base>0.0.1</frame.base>
-		<frame.utils>0.0.1</frame.utils>
-		<frame.fastjson>0.0.1</frame.fastjson>
+        <frame.utils>0.0.1</frame.utils>
+        <frame.security>0.0.1</frame.security>
+        <frame.fastjson>0.0.1</frame.fastjson>
+        <frame.browser>0.0.1</frame.browser>
+        <frame.app>0.0.1</frame.app>
+        <nekohtml.version>1.9.22</nekohtml.version>
+        <fastjson.version>1.2.47</fastjson.version>
+        <lombok.version>1.18.0</lombok.version>
+        <springfox.swagger2.version>2.8.0</springfox.swagger2.version>
+        <springfox.swagger.ui.version>2.8.0</springfox.swagger.ui.version>
 	</properties>
 
 	<dependencies>
