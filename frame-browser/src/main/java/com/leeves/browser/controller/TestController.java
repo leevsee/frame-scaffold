@@ -3,7 +3,9 @@ package com.leeves.browser.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.leeves.browser.dto.User;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +18,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date 2018-06-08
  */
 @Slf4j
-@RestController
+@Controller
 public class TestController {
 
     /**
@@ -24,6 +26,7 @@ public class TestController {
      */
     @GetMapping("/jsonViewTest")
     @JsonView(User.UserSimpleView.class)
+    @ResponseBody
     public User jsonViewTest(){
         User user = new User();
         user.setName("leeves");
@@ -32,10 +35,16 @@ public class TestController {
         return user;
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     /**
      * 运行时异常错误测试
      */
     @GetMapping("/exceptionTest")
+    @ResponseBody
     public User exceptionTest(){
         throw new RuntimeException("运行时异常错误测试");
     }

@@ -25,24 +25,41 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
+                .loginPage("/login")
+                //usernamePassworAuthenticationFilter类处理该登陆请求
+                .loginProcessingUrl("/authentication/form")
 //        http.httpBasic()
                 .and()
                 //下面都是授权配置
                 .authorizeRequests()
+                //排除认证
+                .antMatchers("/login").permitAll()
                 //任何请求
                 .anyRequest()
                 //身份认证
-                .authenticated();
+                .authenticated()
+                .and()
+                .csrf().disable();
+
+/*        http
+                .authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .csrf().disable()
+                .formLogin()
+                .loginPage("/login")
+                .failureUrl("/login?error")
+                .permitAll();*/
     }
 
-    @Override
+/*    @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.userDetailsService(mMyUserDetailsService).passwordEncoder(new MyPasswordEncoder());
         auth.userDetailsService(mMyUserDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-    }
+    }*/
 
-/*    @Bean
+    @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
-    }*/
+    }
 }
