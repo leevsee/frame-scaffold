@@ -1,2 +1,2 @@
 # frame-scaffold
-spring boot 脚手架
+spring boot and spring security
