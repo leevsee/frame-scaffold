@@ -1,8 +1,8 @@
 package com.leeves.app.demo.controller;
 
-import com.leeves.app.demo.dto.R;
 import com.leeves.app.demo.dto.User;
 import com.leeves.app.demo.model.valid.FirstGroup;
+import com.leeves.app.demo.dto.R;
 import com.leeves.fastjson.annotation.JSONP;
 import com.leeves.fastjson.annotation.SerializeField;
 
