@@ -1,4 +1,4 @@
-package com.leeves.app.demo.dto;
+package com.leeves.browser.demo.dto;
 
 import com.fasterxml.jackson.annotation.JsonView;
 

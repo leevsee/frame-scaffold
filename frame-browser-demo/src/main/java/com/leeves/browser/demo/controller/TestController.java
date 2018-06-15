@@ -1,8 +1,7 @@
-package com.leeves.app.demo.controller;
+package com.leeves.browser.demo.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.leeves.app.demo.dto.User;
-import com.leeves.demo.dto.User;
+import com.leeves.browser.demo.dto.User;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

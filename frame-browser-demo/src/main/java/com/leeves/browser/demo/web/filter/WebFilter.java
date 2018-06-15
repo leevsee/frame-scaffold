@@ -1,4 +1,4 @@
-package com.leeves.app.demo.web.filter;
+package com.leeves.browser.demo.web.filter;
 
 import org.springframework.stereotype.Component;
 

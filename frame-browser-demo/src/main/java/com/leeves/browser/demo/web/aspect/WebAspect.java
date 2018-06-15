@@ -1,4 +1,4 @@
-package com.leeves.app.demo.web.aspect;
+package com.leeves.browser.demo.web.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

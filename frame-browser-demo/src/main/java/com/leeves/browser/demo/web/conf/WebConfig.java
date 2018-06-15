@@ -1,7 +1,7 @@
-package com.leeves.app.demo.web.conf;
+package com.leeves.browser.demo.web.conf;
 
-import com.leeves.demo.web.filter.WebFilter;
-import com.leeves.demo.web.interceptor.WebInterceptor;
+import com.leeves.browser.demo.web.filter.WebFilter;
+import com.leeves.browser.demo.web.interceptor.WebInterceptor;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;

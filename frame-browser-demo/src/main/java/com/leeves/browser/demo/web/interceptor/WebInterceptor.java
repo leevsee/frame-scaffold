@@ -1,4 +1,4 @@
-package com.leeves.app.demo.web.interceptor;
+package com.leeves.browser.demo.web.interceptor;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;

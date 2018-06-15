@@ -1,4 +1,4 @@
-package com.leeves.app.demo.web.conf;
+package com.leeves.browser.demo.web.conf;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
