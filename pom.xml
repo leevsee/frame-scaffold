@@ -1,62 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.leeves</groupId>
-	<artifactId>frame-scaffold</artifactId>
-	<version>${frame.scaffold.version}</version>
+    <groupId>com.leeves</groupId>
+    <artifactId>frame-scaffold</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<modules>
-        <module>frame-base</module>
-		<module>frame-utils</module>
-		<module>frame-fastjson</module>
-        <module>frame-security</module>
-		<module>frame-app</module>
+    <modules>
+        <module>frame-core</module>
         <module>frame-browser</module>
+        <module>frame-browser-demo</module>
+        <module>frame-app</module>
+        <module>frame-app-demo</module>
+        <module>frame-app-fastjson</module>
     </modules>
 
-	<packaging>pom</packaging>
+    <properties>
+        <frame.scaffold.version>1.0.0-SNAPSHOT</frame.scaffold.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <frame.core.version>0.0.1</frame.core.version>
+        <frame.browser.version>0.0.1</frame.browser.version>
+        <frame.base.version>0.0.1</frame.base.version>
+        <frame.utils.version>0.0.1</frame.utils.version>
+        <frame.app.fastjson.version>0.0.1</frame.app.fastjson.version>
+        <frame.app.version>0.0.1</frame.app.version>
+    </properties>
 
-	<name>frame-scaffold</name>
-	<description>Demo project for Spring Boot</description>
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.2.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>Cairo-SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.RC2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
-	<properties>
-        <frame.scaffold.version>0.0.1-SNAPSHOT</frame.scaffold.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<frame.base>0.0.1</frame.base>
-        <frame.utils>0.0.1</frame.utils>
-        <frame.security>0.0.1</frame.security>
-        <frame.fastjson>0.0.1</frame.fastjson>
-        <frame.browser>0.0.1</frame.browser>
-        <frame.app>0.0.1</frame.app>
-        <nekohtml.version>1.9.22</nekohtml.version>
-        <fastjson.version>1.2.47</fastjson.version>
-        <lombok.version>1.18.0</lombok.version>
-        <springfox.swagger2.version>2.8.0</springfox.swagger2.version>
-        <springfox.swagger.ui.version>2.8.0</springfox.swagger.ui.version>
-	</properties>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
