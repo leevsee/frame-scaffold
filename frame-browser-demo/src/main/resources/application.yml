@@ -1,0 +1,15 @@
+server:
+  port: 8003
+
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+  security:
+    user:
+      name: leeves
+      password: leeves
+logging:
+  level:
+    com: debug
