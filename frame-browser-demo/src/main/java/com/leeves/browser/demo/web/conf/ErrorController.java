@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ErrorController extends AbstractErrorController {
 
     @Autowired
-    ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
 
     public ErrorController(ErrorAttributes errorAttributes) {
         super(errorAttributes);

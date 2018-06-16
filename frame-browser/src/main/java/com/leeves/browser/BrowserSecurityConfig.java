@@ -1,5 +1,8 @@
 package com.leeves.browser;
 
+import com.leeves.browser.authentication.FrameAuthenticationSuccessHandler;
+import com.leeves.properties.SecurityProperties;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,9 +10,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
- * Description: TODO
+ * Description: url权限配置
  * Package: com.leeves.browser
  *
  * @author Leeves
@@ -18,21 +23,31 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
+    //    @Autowired
 //    private MyUserDetailsServiceImpl mMyUserDetailsService;
+    @Autowired
+    private SecurityProperties securityProperties;
+
+    @Autowired
+    private AuthenticationSuccessHandler frameAuthenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler frameAuthenticationFailureHandler;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
-                .loginPage("/sginIn.html")
+                .loginPage("/authentication/require")
                 //usernamePassworAuthenticationFilter类处理该登陆请求
-                .loginProcessingUrl("/login")
+                .loginProcessingUrl("/authentication/login")
+                .successHandler(frameAuthenticationSuccessHandler)
+                .failureHandler(frameAuthenticationFailureHandler)
 //        http.httpBasic()
                 .and()
                 //下面都是授权配置
                 .authorizeRequests()
                 //排除认证
-                .antMatchers("/sginIn.html").permitAll()
+                .antMatchers("/authentication/require", securityProperties.getBrowser().getLoginPage()).permitAll()
                 //任何请求
                 .anyRequest()
                 //身份认证
@@ -58,7 +73,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     }*/
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

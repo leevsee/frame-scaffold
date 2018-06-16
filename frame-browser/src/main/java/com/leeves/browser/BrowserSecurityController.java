@@ -1,5 +1,9 @@
 package com.leeves.browser;
 
+import com.leeves.browser.support.SimpleResponse;
+import com.leeves.properties.SecurityProperties;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -17,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Description: TODO
+ * Description: 登陆跳转类
  * Package: com.leeves.browser
  *
  * @author Leeves
@@ -26,26 +30,31 @@ import javax.servlet.http.HttpServletResponse;
 @RestController
 public class BrowserSecurityController {
 
-    /** http请求缓存到此类 */
+    /**
+     * http请求缓存到此类
+     */
     private RequestCache mRequestCache = new HttpSessionRequestCache();
 
     private RedirectStrategy mRedirectStrategy = new DefaultRedirectStrategy();
 
+    @Autowired
+    private SecurityProperties securityProperties;
+
     /**
-     * 身份认证
+     * 身份认证跳转处理
      */
     @RequestMapping("/authentication/require")
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
-    public String requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest cacheRequest = mRequestCache.getRequest(request, response);
-        if (cacheRequest !=null){
+        if (cacheRequest != null) {
             String targetUrl = cacheRequest.getRedirectUrl();
-            if (!StringUtils.endsWithIgnoreCase(targetUrl,".html")){
-                mRedirectStrategy.sendRedirect(request,response,"");
+            if (StringUtils.endsWithIgnoreCase(targetUrl, ".html")) {
+                mRedirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
             }
         }
 
-        return null;
+        return new SimpleResponse("访问的服务器需要认证，请引导用户到登陆页面");
     }
 
 }

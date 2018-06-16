@@ -26,7 +26,7 @@ public class WebAspect {
      * 里面所有的方法：.*
      * 里面任意的参数：(..)
      */
-    @Around("execution(* com.leeves.browser.controller.TestController.*(..))")
+    @Around("execution(* com.leeves.browser.demo.controller.TestController.*(..))")
     public Object handlerControllerMethod(ProceedingJoinPoint pjp) throws Throwable {
         System.out.println(Arrays.toString(pjp.getArgs()));
         Long startTime = new Date().getTime();

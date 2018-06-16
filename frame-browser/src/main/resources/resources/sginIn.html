@@ -1,8 +1,11 @@
 <html>
-<head><title>Login Page</title></head>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Login Page</title>
+</head>
 <body onload='document.f.username.focus();'>
-<h3>Login with Username and Password</h3>
-<form name='f' action='/login' method='POST'>
+<h3>标准登陆页面</h3>
+<form name='f' action='/authentication/login' method='POST'>
     <table>
         <tr>
             <td>User:</td>

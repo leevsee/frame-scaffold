@@ -13,3 +13,9 @@ spring:
 logging:
   level:
     com: debug
+
+leeves:
+  frame:
+    browser:
+      loginPage: /demoLogin.html
+      loginType: REDIRECT

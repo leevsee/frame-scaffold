@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Description: TODO
+ * Description: 自定义登陆校验
  * Package: com.leeves.browser
  *
  * @author Leeves
