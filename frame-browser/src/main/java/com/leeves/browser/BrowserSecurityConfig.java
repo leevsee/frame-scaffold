@@ -1,7 +1,7 @@
 package com.leeves.browser;
 
-import com.leeves.browser.authentication.FrameAuthenticationSuccessHandler;
 import com.leeves.properties.SecurityProperties;
+import com.leeves.validate.core.ValidateCodeFilter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
  * Description: url权限配置
@@ -36,7 +37,13 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
+        ValidateCodeFilter validateCodeFilter = new ValidateCodeFilter();
+        validateCodeFilter.setAuthenticationFailureHandler(frameAuthenticationFailureHandler);
+        validateCodeFilter.setSecurityProperties(securityProperties);
+        validateCodeFilter.afterPropertiesSet();
+
+        http.addFilterBefore(validateCodeFilter,UsernamePasswordAuthenticationFilter.class)
+                .formLogin()
                 .loginPage("/authentication/require")
                 //usernamePassworAuthenticationFilter类处理该登陆请求
                 .loginProcessingUrl("/authentication/login")
@@ -47,7 +54,9 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 //下面都是授权配置
                 .authorizeRequests()
                 //排除认证
-                .antMatchers("/authentication/require", securityProperties.getBrowser().getLoginPage()).permitAll()
+                .antMatchers("/authentication/require",
+                        securityProperties.getBrowser().getLoginPage(),
+                        "/code/image").permitAll()
                 //任何请求
                 .anyRequest()
                 //身份认证

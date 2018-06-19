@@ -3,6 +3,11 @@ package com.leeves.browser.demo.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.leeves.browser.demo.dto.User;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,10 +39,24 @@ public class TestController {
         return user;
     }
 
-//    @GetMapping("/login")
-//    public String login() {
-//        return "login";
-//    }
+    /**
+     * 获得认证后所有的认证信息
+     */
+    @GetMapping("/authentication/authentication")
+    @ResponseBody
+    public Object getAuthentication(Authentication authentication) {
+//        return SecurityContextHolder.getContext().getAuthentication();
+        return authentication;
+    }
+
+    /**
+     * 获得认证后的用户信息
+     */
+    @GetMapping("/authentication/userDetail")
+    @ResponseBody
+    public Object getAuthenticationUserDetails(@AuthenticationPrincipal UserDetails userDetails) {
+        return userDetails;
+    }
 
     /**
      * 运行时异常错误测试

@@ -17,5 +17,15 @@ logging:
 leeves:
   frame:
     browser:
+      #配置登陆页面
       loginPage: /demoLogin.html
-      loginType: REDIRECT
+      #如果配置此项，也要编写错误页面，返回错误的参数，默认是json返回
+#      loginType: REDIRECT
+    code:
+      image:
+      #验证码长度
+       length: 6
+       #验证宽度
+       width: 100
+       #哪些url需要验证码校验，以英文逗号分隔。
+       url: /user/*

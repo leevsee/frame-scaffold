@@ -1,6 +1,7 @@
 package com.leeves.browser.authentication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.leeves.browser.support.SimpleResponse;
 import com.leeves.properties.LoginType;
 import com.leeves.properties.SecurityProperties;
 
@@ -42,7 +43,8 @@ public class FrameAuthenticationFailureHandler extends SimpleUrlAuthenticationFa
         if (LoginType.JSON.equals(securityProperties.getBrowser().getLoginType())){
             response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
             response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(objectMapper.writeValueAsString(exception));
+//            response.getWriter().write(objectMapper.writeValueAsString(exception));
+            response.getWriter().write(objectMapper.writeValueAsString(new SimpleResponse(exception.getMessage())));
         }else {
             super.onAuthenticationFailure(request,response,exception);
         }
