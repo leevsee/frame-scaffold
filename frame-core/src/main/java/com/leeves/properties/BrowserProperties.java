@@ -1,5 +1,7 @@
 package com.leeves.properties;
 
+import lombok.Data;
+
 /**
  * Description:
  * Package: com.leeves.properties
@@ -7,6 +9,7 @@ package com.leeves.properties;
  * @author Leeves
  * @version 1.0.0  2018-06-15
  */
+@Data
 public class BrowserProperties {
 
     /**
@@ -16,19 +19,6 @@ public class BrowserProperties {
 
     private LoginType loginType = LoginType.JSON;
 
-    public String getLoginPage() {
-        return loginPage;
-    }
+    private int rememberMeSec = 3600;
 
-    public void setLoginPage(String loginPage) {
-        this.loginPage = loginPage;
-    }
-
-    public LoginType getLoginType() {
-        return loginType;
-    }
-
-    public void setLoginType(LoginType loginType) {
-        this.loginType = loginType;
-    }
 }

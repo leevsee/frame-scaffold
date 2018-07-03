@@ -53,7 +53,6 @@ public class BrowserSecurityController {
                 mRedirectStrategy.sendRedirect(request, response, securityProperties.getBrowser().getLoginPage());
             }
         }
-
         return new SimpleResponse("访问的服务器需要认证，请引导用户到登陆页面");
     }
 

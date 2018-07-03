@@ -1,6 +1,5 @@
 server:
   port: 8003
-
 spring:
   profiles:
     active: dev
@@ -10,22 +9,29 @@ spring:
     user:
       name: leeves
       password: leeves
+  datasource:
+    url: jdbc:mysql://localhost:3306/frame_scaffold?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: Bxd12345
+    driver-class-name: com.mysql.jdbc.Driver
+
 logging:
   level:
     com: debug
 
 leeves:
   frame:
-    browser:
+#注解以下则使用默认登陆页面
+#    browser:
       #配置登陆页面
-      loginPage: /demoLogin.html
+#      loginPage: /demoLogin.html
       #如果配置此项，也要编写错误页面，返回错误的参数，默认是json返回
 #      loginType: REDIRECT
     code:
       image:
       #验证码长度
-       length: 6
+       length: 4
        #验证宽度
-       width: 100
+       width: 60
        #哪些url需要验证码校验，以英文逗号分隔。
        url: /user/*

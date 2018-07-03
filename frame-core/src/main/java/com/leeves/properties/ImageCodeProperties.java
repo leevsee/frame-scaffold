@@ -1,58 +1,24 @@
 package com.leeves.properties;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
- * Description: TODO
+ * Description: \
  * Package: com.leeves.properties
  *
  * @author Leeves
  * @version 1.0.0  2018-06-16
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
+public class ImageCodeProperties extends SmsCodeProperties {
 
-public class ImageCodeProperties {
+    public ImageCodeProperties() {
+        setLength(4);
+    }
 
     private int width = 67;
     private int height = 23;
-    private int length =4;
-    private int expireIn = 60;
-    private String url;
 
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getExpireIn() {
-        return expireIn;
-    }
-
-    public void setExpireIn(int expireIn) {
-        this.expireIn = expireIn;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }
