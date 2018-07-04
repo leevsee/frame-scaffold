@@ -60,11 +60,11 @@ public class ValidateController {
     }*/
 
     @Autowired
-    private Map<String, ValidateCodeProcessor> ValidateCodeProcessors;
+    private Map<String, ValidateCodeProcessor> validateCodeProcessors;
 
     @GetMapping("/code/{type}")
     public void createCode(HttpServletRequest request, HttpServletResponse response, @PathVariable String type) throws Exception {
-        ValidateCodeProcessors.get(type + "CodeProcessor").create(new ServletWebRequest(request, response));
+        validateCodeProcessors.get(type + "CodeProcessor").create(new ServletWebRequest(request, response));
     }
 
 
