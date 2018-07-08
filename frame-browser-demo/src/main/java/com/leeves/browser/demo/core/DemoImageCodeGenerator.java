@@ -1,9 +1,8 @@
 package com.leeves.browser.demo.core;
 
-import com.leeves.validate.core.ImageCode;
+import com.leeves.validate.core.imageCode.ImageCode;
 import com.leeves.validate.core.ValidateCodeGenerator;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 
 /**

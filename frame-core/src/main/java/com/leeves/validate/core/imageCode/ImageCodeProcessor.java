@@ -1,6 +1,5 @@
 package com.leeves.validate.core.imageCode;
 
-import com.leeves.validate.core.ImageCode;
 import com.leeves.validate.core.impl.AbstractValidateCodeProcessor;
 
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ import javax.imageio.ImageIO;
  * @author Leeves
  * @version 1.0.0  2018-07-01
  */
-@Component
+@Component("imageValidateCodeProcessor")
 public class ImageCodeProcessor extends AbstractValidateCodeProcessor<ImageCode> {
 
     /**
@@ -26,4 +25,8 @@ public class ImageCodeProcessor extends AbstractValidateCodeProcessor<ImageCode>
         ImageIO.write(imageCode.getImage(), "JPEG", request.getResponse().getOutputStream());
     }
 
+    @Override
+    public void validate(ServletWebRequest servletWebRequest) {
+
+    }
 }

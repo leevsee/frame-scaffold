@@ -1,5 +1,7 @@
 package com.leeves.authentication.mobile;
 
+import com.leeves.properties.SecurityConstants;
+
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,7 +24,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
     // ~ Static fields/initializers
     // =====================================================================================
     //参数中请求手机验证码的参数是什么
-    public static final String FRAME_SCAFFOLD_FORM_MOBILE_KEY = "mobile";
+    public static final String FRAME_SCAFFOLD_FORM_MOBILE_KEY = SecurityConstants.DEFAULT_PARAMETER_NAME_MOBILE;
     private String mobileParameter = FRAME_SCAFFOLD_FORM_MOBILE_KEY;
     //是否只处理post请求
     private boolean postOnly = true;
@@ -32,7 +34,7 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
 
     public SmsCodeAuthenticationFilter() {
         //提交表单的时候的请求
-        super(new AntPathRequestMatcher("/authentication/mobile", "POST"));
+        super(new AntPathRequestMatcher(SecurityConstants.DEFAULT_LOGIN_PROCESSING_URL_MOBILE, "POST"));
     }
 
     // ~ Methods
@@ -78,6 +80,18 @@ public class SmsCodeAuthenticationFilter extends AbstractAuthenticationProcessin
      */
     protected void setDetails(HttpServletRequest request, SmsCodeAuthenticationToken authRequest) {
         authRequest.setDetails(authenticationDetailsSource.buildDetails(request));
+    }
+
+    /**
+     * Sets the parameter name which will be used to obtain the username from
+     * the login request.
+     *
+     * @param usernameParameter
+     *            the parameter name. Defaults to "username".
+     */
+    public void setMobileParameter(String usernameParameter) {
+        Assert.hasText(usernameParameter, "Username parameter must not be empty or null");
+        this.mobileParameter = usernameParameter;
     }
 
     /**

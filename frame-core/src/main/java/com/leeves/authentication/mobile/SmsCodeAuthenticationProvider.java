@@ -45,4 +45,11 @@ public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
         return SmsCodeAuthenticationToken.class.isAssignableFrom(authentication);
     }
 
+    public UserDetailsService getUserDetailsService() {
+        return mUserDetailsService;
+    }
+
+    public void setUserDetailsService(UserDetailsService userDetailsService) {
+        mUserDetailsService = userDetailsService;
+    }
 }

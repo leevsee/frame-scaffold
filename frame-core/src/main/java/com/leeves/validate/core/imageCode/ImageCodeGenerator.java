@@ -1,10 +1,10 @@
 package com.leeves.validate.core.imageCode;
 
 import com.leeves.properties.SecurityProperties;
-import com.leeves.validate.core.ImageCode;
 import com.leeves.validate.core.ValidateCodeGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.context.request.ServletWebRequest;
 
@@ -21,6 +21,7 @@ import java.util.Random;
  * @author Leeves
  * @version 1.0.0  2018-06-17
  */
+@Component("imageValidateCodeGenerator")
 public class ImageCodeGenerator implements ValidateCodeGenerator {
 
     @Autowired

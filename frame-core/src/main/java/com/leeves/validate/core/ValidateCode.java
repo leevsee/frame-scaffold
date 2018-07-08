@@ -1,9 +1,6 @@
 package com.leeves.validate.core;
 
-import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
-
-import lombok.Data;
 
 /**
  * Description: 短信验证码
@@ -12,7 +9,6 @@ import lombok.Data;
  * @author Leeves
  * @version 1.0.0  2018-06-29
  */
-@Data
 public class ValidateCode {
 
     private String code;
@@ -32,4 +28,19 @@ public class ValidateCode {
         return LocalDateTime.now().isAfter(expireTime);
     }
 
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public LocalDateTime getExpireTime() {
+        return expireTime;
+    }
+
+    public void setExpireTime(LocalDateTime expireTime) {
+        this.expireTime = expireTime;
+    }
 }

@@ -17,8 +17,6 @@ public class SmsCodeAuthenticationToken extends AbstractAuthenticationToken {
 
     private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
-    // ~ Instance fields
-    // ================================================================================================
     //认证前放手机号码，认证后用户信息
     private final Object principal;
     //此处用来使用密码，本短信验证不用，估去掉

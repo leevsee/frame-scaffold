@@ -1,6 +1,7 @@
 package com.leeves.browser;
 
 import com.leeves.browser.support.SimpleResponse;
+import com.leeves.properties.SecurityConstants;
 import com.leeves.properties.SecurityProperties;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class BrowserSecurityController {
     /**
      * 身份认证跳转处理
      */
-    @RequestMapping("/authentication/require")
+    @RequestMapping(SecurityConstants.DEFAULT_UNAUTHENTICATION_URL)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest cacheRequest = mRequestCache.getRequest(request, response);

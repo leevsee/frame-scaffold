@@ -1,4 +1,6 @@
-package com.leeves.validate.core;
+package com.leeves.validate.core.imageCode;
+
+import com.leeves.validate.core.ValidateCode;
 
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
@@ -13,8 +15,6 @@ import lombok.EqualsAndHashCode;
  * @author Leeves
  * @version 1.0.0  2018-06-16
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
 public class ImageCode extends ValidateCode {
 
     private BufferedImage image;
